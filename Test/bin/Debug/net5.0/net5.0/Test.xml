@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Test</name>
+    </assembly>
+    <members>
+        <member name="T:Test.Controllers.customerController">
+            <summary>
+            customerController
+            </summary>
+        </member>
+        <member name="M:Test.Controllers.customerController.#ctor(Microsoft.Extensions.Logging.ILogger{Test.Controllers.customerController},ServiceStack.Redis.IRedisClientsManager)">
+            <summary>
+            customerController
+            </summary>
+            <param name="logger"></param>
+            <param name="redisClientsManager"></param>
+        </member>
+        <member name="M:Test.Controllers.customerController.UpdateScore(System.Nullable{System.Int64},System.Nullable{System.Decimal})">
+            <summary>
+            Add or modify user scores
+            </summary>
+            <param name="customerid"></param>
+            <param name="score"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Test.Controllers.leaderboardController">
+            <summary>
+            leaderboardController
+            </summary>
+        </member>
+        <member name="M:Test.Controllers.leaderboardController.#ctor(Microsoft.Extensions.Logging.ILogger{Test.Controllers.leaderboardController},ServiceStack.Redis.IRedisClientsManager)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="redisClientsManager"></param>
+        </member>
+        <member name="M:Test.Controllers.leaderboardController.GetLeaderboard(System.Int32,System.Int32)">
+            <summary>
+            Obtain the leaderboard based on rankings
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Test.Controllers.leaderboardController.GetLeaderboardByCustomId(System.Int64,System.Int32,System.Int32)">
+            <summary>
+            Based on the customer ID, retrieve the top or bottom few entries from the ranking list
+            </summary>
+            <param name="customerid"></param>
+            <param name="high"></param>
+            <param name="low"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Test.Controllers.testController">
+            <summary>
+            testController
+            </summary>
+        </member>
+        <member name="F:Test.Controllers.testController._logger">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Test.Controllers.testController._redisClientsManager">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Test.Controllers.testController.#ctor(Microsoft.Extensions.Logging.ILogger{Test.Controllers.testController},ServiceStack.Redis.IRedisClientsManager)">
+            <summary>
+            testController
+            </summary>
+            <param name="logger"></param>
+            <param name="redisClientsManager"></param>
+        </member>
+        <member name="M:Test.Controllers.testController.delete">
+            <summary>
+            delete the leaderboard
+            </summary>
+        </member>
+        <member name="T:Test.CustomException.AppFriendlyException">
+            <summary>
+            自定义异常类
+            </summary>
+        </member>
+        <member name="M:Test.CustomException.AppFriendlyException.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:Test.CustomException.AppFriendlyException.#ctor(System.String,System.Object)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="message"></param>
+            <param name="errorCode"></param>
+        </member>
+        <member name="M:Test.CustomException.AppFriendlyException.#ctor(System.String,System.Object,System.Exception)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="message"></param>
+            <param name="errorCode"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="M:Test.CustomException.AppFriendlyException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
+        </member>
+        <member name="P:Test.CustomException.AppFriendlyException.ErrorCode">
+            <summary>
+            错误码
+            </summary>
+        </member>
+        <member name="P:Test.CustomException.AppFriendlyException.ErrorMessage">
+            <summary>
+            错误消息（支持 Object 对象）
+            </summary>
+        </member>
+        <member name="P:Test.CustomException.AppFriendlyException.StatusCode">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:Test.CustomException.AppFriendlyException.ValidationException">
+            <summary>
+            是否是数据验证异常
+            </summary>
+        </member>
+        <member name="T:Test.Model.RedisConfiguration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Test.Model.RedisConfiguration.ConfigurationString">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Test.Model.RedisConfiguration.Password">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Test.Model.RedisConfiguration.ConnectTimeout">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Test.Model.RedisConfiguration.PoolSize">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Test.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Test.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Test.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Test.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Test.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:Test.Startup.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Test.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Test.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>
