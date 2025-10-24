@@ -5,12 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using ServiceStack.Redis;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Test.Model;
-
 namespace Test
 {
     /// <summary>
@@ -37,12 +34,12 @@ namespace Test
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
-            // config redis
-            var redisConfig = Configuration.GetSection("RedisConfiguration").Get<RedisConfiguration>();
-            services.AddSingleton<IRedisClientsManager>(c =>
+            services.AddCors(options =>
             {
-                var clientsManager = new PooledRedisClientManager(redisConfig.PoolSize,redisConfig.ConnectTimeout, new string[] { redisConfig.ConfigurationString }); // 替换为你的Redis服务器地址和端口
-                return clientsManager;
+                options.AddPolicy("AllowAll",
+                    builder => builder.AllowAnyOrigin()
+                                     .AllowAnyMethod()
+                                     .AllowAnyHeader());
             });
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -75,6 +72,8 @@ namespace Test
             }
 
             app.UseRouting();
+
+            app.UseCors("AllowAll"); // 使用CORS中间件
 
             app.UseAuthorization();
 

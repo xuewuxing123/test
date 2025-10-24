@@ -9,12 +9,11 @@
             customerController
             </summary>
         </member>
-        <member name="M:Test.Controllers.customerController.#ctor(Microsoft.Extensions.Logging.ILogger{Test.Controllers.customerController},ServiceStack.Redis.IRedisClientsManager)">
+        <member name="M:Test.Controllers.customerController.#ctor(Microsoft.Extensions.Logging.ILogger{Test.Controllers.customerController})">
             <summary>
             customerController
             </summary>
             <param name="logger"></param>
-            <param name="redisClientsManager"></param>
         </member>
         <member name="M:Test.Controllers.customerController.UpdateScore(System.Nullable{System.Int64},System.Nullable{System.Decimal})">
             <summary>
@@ -29,20 +28,11 @@
             leaderboardController
             </summary>
         </member>
-        <member name="M:Test.Controllers.leaderboardController.#ctor(Microsoft.Extensions.Logging.ILogger{Test.Controllers.leaderboardController},ServiceStack.Redis.IRedisClientsManager)">
+        <member name="M:Test.Controllers.leaderboardController.#ctor(Microsoft.Extensions.Logging.ILogger{Test.Controllers.leaderboardController})">
             <summary>
             
             </summary>
             <param name="logger"></param>
-            <param name="redisClientsManager"></param>
-        </member>
-        <member name="M:Test.Controllers.leaderboardController.GetLeaderboard(System.Int32,System.Int32)">
-            <summary>
-            Obtain the leaderboard based on rankings
-            </summary>
-            <param name="start"></param>
-            <param name="end"></param>
-            <returns></returns>
         </member>
         <member name="M:Test.Controllers.leaderboardController.GetLeaderboardByCustomId(System.Int64,System.Int32,System.Int32)">
             <summary>
@@ -53,108 +43,31 @@
             <param name="low"></param>
             <returns></returns>
         </member>
+        <member name="M:Test.Controllers.leaderboardController.GetLeaderboard(System.Int32,System.Int32)">
+            <summary>
+            Obtain the leaderboard based on rankings
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <returns></returns>
+        </member>
         <member name="T:Test.Controllers.testController">
             <summary>
             testController
             </summary>
         </member>
-        <member name="F:Test.Controllers.testController._logger">
+        <member name="M:Test.Controllers.testController.#ctor(Microsoft.Extensions.Logging.ILogger{Test.Controllers.testController})">
             <summary>
             
             </summary>
-        </member>
-        <member name="F:Test.Controllers.testController._redisClientsManager">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Test.Controllers.testController.#ctor(Microsoft.Extensions.Logging.ILogger{Test.Controllers.testController},ServiceStack.Redis.IRedisClientsManager)">
             <summary>
             testController
             </summary>
             <param name="logger"></param>
-            <param name="redisClientsManager"></param>
         </member>
         <member name="M:Test.Controllers.testController.delete">
             <summary>
             delete the leaderboard
-            </summary>
-        </member>
-        <member name="T:Test.CustomException.AppFriendlyException">
-            <summary>
-            自定义异常类
-            </summary>
-        </member>
-        <member name="M:Test.CustomException.AppFriendlyException.#ctor">
-            <summary>
-            构造函数
-            </summary>
-        </member>
-        <member name="M:Test.CustomException.AppFriendlyException.#ctor(System.String,System.Object)">
-            <summary>
-            构造函数
-            </summary>
-            <param name="message"></param>
-            <param name="errorCode"></param>
-        </member>
-        <member name="M:Test.CustomException.AppFriendlyException.#ctor(System.String,System.Object,System.Exception)">
-            <summary>
-            构造函数
-            </summary>
-            <param name="message"></param>
-            <param name="errorCode"></param>
-            <param name="innerException"></param>
-        </member>
-        <member name="M:Test.CustomException.AppFriendlyException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            构造函数
-            </summary>
-            <param name="info"></param>
-            <param name="context"></param>
-        </member>
-        <member name="P:Test.CustomException.AppFriendlyException.ErrorCode">
-            <summary>
-            错误码
-            </summary>
-        </member>
-        <member name="P:Test.CustomException.AppFriendlyException.ErrorMessage">
-            <summary>
-            错误消息（支持 Object 对象）
-            </summary>
-        </member>
-        <member name="P:Test.CustomException.AppFriendlyException.StatusCode">
-            <summary>
-            状态码
-            </summary>
-        </member>
-        <member name="P:Test.CustomException.AppFriendlyException.ValidationException">
-            <summary>
-            是否是数据验证异常
-            </summary>
-        </member>
-        <member name="T:Test.Model.RedisConfiguration">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Test.Model.RedisConfiguration.ConfigurationString">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Test.Model.RedisConfiguration.Password">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Test.Model.RedisConfiguration.ConnectTimeout">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Test.Model.RedisConfiguration.PoolSize">
-            <summary>
-            
             </summary>
         </member>
         <member name="T:Test.Program">
@@ -174,6 +87,39 @@
             </summary>
             <param name="args"></param>
             <returns></returns>
+        </member>
+        <member name="T:Test.Service.SingletonConcurrentCache">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Test.Service.SingletonConcurrentCache.Instance">
+            <summary>
+            Instance
+            </summary>
+        </member>
+        <member name="F:Test.Service.SingletonConcurrentCache.concurrentDictionary">
+            <summary>
+            AddOrUpdate
+            </summary>
+        </member>
+        <member name="M:Test.Service.SingletonConcurrentCache.AddOrUpdate(System.Int64,System.Decimal)">
+            <summary>
+            AddOrUpdate
+            </summary>
+            <param name="key"></param>
+            <param name="addValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Test.Service.SingletonConcurrentCache.RemoveAll">
+            <summary>
+            RemoveAll
+            </summary>
+        </member>
+        <member name="P:Test.Service.SingletonConcurrentCache.List">
+            <summary>
+            List
+            </summary>
         </member>
         <member name="T:Test.Startup">
             <summary>

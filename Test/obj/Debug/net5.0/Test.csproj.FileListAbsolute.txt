@@ -79,10 +79,6 @@ C:\Users\Administrator\source\repos\Test\Test\bin\Debug\net5.0\net5.0\Microsoft.
 C:\Users\Administrator\source\repos\Test\Test\bin\Debug\net5.0\net5.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll
 C:\Users\Administrator\source\repos\Test\Test\bin\Debug\net5.0\net5.0\Microsoft.Extensions.Primitives.dll
 C:\Users\Administrator\source\repos\Test\Test\bin\Debug\net5.0\net5.0\Microsoft.OpenApi.dll
-C:\Users\Administrator\source\repos\Test\Test\bin\Debug\net5.0\net5.0\ServiceStack.Common.dll
-C:\Users\Administrator\source\repos\Test\Test\bin\Debug\net5.0\net5.0\ServiceStack.Interfaces.dll
-C:\Users\Administrator\source\repos\Test\Test\bin\Debug\net5.0\net5.0\ServiceStack.Redis.dll
-C:\Users\Administrator\source\repos\Test\Test\bin\Debug\net5.0\net5.0\ServiceStack.Text.dll
 C:\Users\Administrator\source\repos\Test\Test\bin\Debug\net5.0\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Administrator\source\repos\Test\Test\bin\Debug\net5.0\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Administrator\source\repos\Test\Test\bin\Debug\net5.0\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll

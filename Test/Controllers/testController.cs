@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ServiceStack.Redis;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading;
+using Test.Service;
 
 namespace Test.Controllers
 {
@@ -11,34 +15,26 @@ namespace Test.Controllers
     [Route("[controller]")]
     public class testController : ControllerBase
     {
-        /// <summary>
-        /// 
-        /// </summary>
         private readonly ILogger<testController> _logger;
         /// <summary>
         /// 
         /// </summary>
-        private readonly IRedisClientsManager _redisClientsManager;
         /// <summary>
         /// testController
         /// </summary>
         /// <param name="logger"></param>
-        /// <param name="redisClientsManager"></param>
-        public testController(ILogger<testController> logger, IRedisClientsManager redisClientsManager)
+
+        public testController(ILogger<testController> logger)
         {
             _logger = logger;
-            _redisClientsManager = redisClientsManager;
         }
         /// <summary>
         /// delete the leaderboard
         /// </summary>
-        [HttpGet]
+        [HttpDelete]
         public void delete()
         {
-            using (var client = _redisClientsManager.GetClient())
-            {
-                client.RemoveRangeFromSortedSet("Leaderboard",0,-1);
-            }
+            SingletonConcurrentCache.Instance.RemoveAll();
         }
     }
 }

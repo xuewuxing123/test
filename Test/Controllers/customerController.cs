@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ServiceStack.Redis;
 using System.ComponentModel.DataAnnotations;
+using Test.Service;
 
 namespace Test.Controllers
 {
@@ -13,16 +13,13 @@ namespace Test.Controllers
     public class customerController : ControllerBase
     {
         private readonly ILogger<customerController> _logger;
-        private readonly IRedisClientsManager _redisClientsManager;
         /// <summary>
         /// customerController
         /// </summary>
         /// <param name="logger"></param>
-        /// <param name="redisClientsManager"></param>
-        public customerController(ILogger<customerController> logger,IRedisClientsManager redisClientsManager)
+        public customerController(ILogger<customerController> logger)
         {
             this._logger = logger;
-            this._redisClientsManager = redisClientsManager;
         }
         /// <summary>
         /// Add or modify user scores
@@ -33,11 +30,8 @@ namespace Test.Controllers
         [HttpPost("{customerid}/score/{score}")]
         public IActionResult UpdateScore([Range(1, int.MaxValue)] long? customerid, [Range(-1000, 1000)] decimal? score)
         {
-            using (var client = _redisClientsManager.GetClient())
-            {
-                var ret = client.IncrementItemInSortedSet("Leaderboard", customerid.ToString(), (double)score);
-                return Ok(ret);
-            }
+            var ret = SingletonConcurrentCache.Instance.AddOrUpdate(customerid.Value, score.Value);
+            return Ok(ret);
         }
     }
 }

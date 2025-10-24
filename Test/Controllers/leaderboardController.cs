@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ServiceStack.Redis;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Threading;
+using Test.Service;
 
 namespace Test.Controllers
 {
@@ -16,37 +17,13 @@ namespace Test.Controllers
     {
         private readonly ILogger<leaderboardController> _logger;
         
-        private readonly IRedisClientsManager _redisClientsManager;
         /// <summary>
         /// 
         /// </summary>
         /// <param name="logger"></param>
-        /// <param name="redisClientsManager"></param>
-        public leaderboardController(ILogger<leaderboardController> logger, IRedisClientsManager redisClientsManager)
+        public leaderboardController(ILogger<leaderboardController> logger)
         {
             _logger = logger;
-            _redisClientsManager = redisClientsManager;
-        }
-
-        /// <summary>
-        /// Obtain the leaderboard based on rankings
-        /// </summary>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <returns></returns>
-        [HttpGet()]
-        public IActionResult GetLeaderboard([Required, Range(1, int.MaxValue)] int start, [Required, Range(1, int.MaxValue)] int end)
-        {
-            using (var client = _redisClientsManager.GetClient())
-            {
-                var datas= client.GetRangeWithScoresFromSortedSetDesc("Leaderboard", Interlocked.Decrement(ref start), Interlocked.Decrement(ref end));
-                List<dynamic> ret = new List<dynamic>();
-                foreach (KeyValuePair<string, double> data in datas)
-                {
-                    ret.Add(new { CustomerID = data.Key, Score = data.Value, Rank = Interlocked.Increment(ref start) });
-                }
-                return Ok(ret); ;
-            }
         }
         /// <summary>
         /// Based on the customer ID, retrieve the top or bottom few entries from the ranking list
@@ -56,21 +33,26 @@ namespace Test.Controllers
         /// <param name="low"></param>
         /// <returns></returns>
         [HttpGet("{customerid}")]
-        public IActionResult GetLeaderboardByCustomId(long customerid,int high=0,int low=0)
+        public IActionResult GetLeaderboardByCustomId(long customerid, int high = 0, int low = 0)
         {
-            using (var client = _redisClientsManager.GetClient())
-            {
-                int index = (int)client.GetItemIndexInSortedSetDesc("Leaderboard", customerid.ToString());
-                int from = Interlocked.Add(ref index, -high)<0?0:index;
-                int to = Interlocked.Add(ref index, Interlocked.Add(ref low,high));
-                var datas = client.GetRangeWithScoresFromSortedSetDesc("Leaderboard", from, to);
-                List<dynamic> ret = new List<dynamic>();
-                foreach (KeyValuePair<string,double> data in datas)
-                {
-                    ret.Add(new { CustomerID=data.Key, Score=data.Value, Rank= Interlocked.Increment(ref from)});
-                }
-                return  Ok(ret); ;
-            }
+            var list = SingletonConcurrentCache.Instance.List;
+            int index = list.FindIndex(p => p.CustomerID == customerid);
+            int from = Interlocked.Add(ref index, -high) < 0 ? 0 : index;
+            int to = Interlocked.Add(ref index, Interlocked.Add(ref low, high));
+            var datas = list.Skip(from).Take(to - from + 1).ToList();
+            return Ok(datas);
+        }
+        /// <summary>
+        /// Obtain the leaderboard based on rankings
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        [HttpGet("/GetLeaderboard")]
+        public IActionResult GetLeaderboard([Required, Range(1, int.MaxValue)] int start, [Required, Range(1, int.MaxValue)] int end)
+        {
+            var list = SingletonConcurrentCache.Instance.List.Where(p => p.Rank >= start && p.Rank <= end).ToList();
+            return Ok(list);
         }
     }
 }
