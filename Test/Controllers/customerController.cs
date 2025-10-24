@@ -22,7 +22,7 @@ namespace Test.Controllers
             this._logger = logger;
         }
         /// <summary>
-        /// Add or modify user scores
+        /// Add or modify user score
         /// </summary>
         /// <param name="customerid"></param>
         /// <param name="score"></param>
