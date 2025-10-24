@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P1HkGPYR87Op97o1EmrCVcE3omlBCKuDjCVV8nC7KqbJZ5poAb43q1xnzHe+HqbTjCjRmyizeXqhCZZXEoGjRw==",
+  "dgSpecHash": "kA7rW7sreNhWRtgxwFPZSg7ra/x88xmutyk/tzCch2zLY+7OsnmNjKVevG4k3HQkEWtZkuEMPUh9exx1gTVfaA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\Test\\Test\\Test.csproj",
+  "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\新建文件夹\\test\\Test\\Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\10.0.0-rc.2.25502.107\\microsoft.bcl.asyncinterfaces.10.0.0-rc.2.25502.107.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",

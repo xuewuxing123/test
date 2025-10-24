@@ -90,7 +90,22 @@
         </member>
         <member name="T:Test.Service.SingletonConcurrentCache">
             <summary>
-            
+            SingletonConcurrentCache
+            </summary>
+        </member>
+        <member name="F:Test.Service.SingletonConcurrentCache.instance">
+            <summary>
+            instance
+            </summary>
+        </member>
+        <member name="F:Test.Service.SingletonConcurrentCache.lockObject">
+            <summary>
+            lockObject
+            </summary>
+        </member>
+        <member name="M:Test.Service.SingletonConcurrentCache.#ctor">
+            <summary>
+            Constructor funcation
             </summary>
         </member>
         <member name="P:Test.Service.SingletonConcurrentCache.Instance">
@@ -100,7 +115,7 @@
         </member>
         <member name="F:Test.Service.SingletonConcurrentCache.concurrentDictionary">
             <summary>
-            AddOrUpdate
+            concurrentDictionary
             </summary>
         </member>
         <member name="M:Test.Service.SingletonConcurrentCache.AddOrUpdate(System.Int64,System.Decimal)">
@@ -118,7 +133,7 @@
         </member>
         <member name="P:Test.Service.SingletonConcurrentCache.List">
             <summary>
-            List
+            To List
             </summary>
         </member>
         <member name="T:Test.Startup">
