@@ -23,7 +23,6 @@ namespace Test.Service
         /// </summary>
         private SingletonConcurrentCache() 
         {
-
         }
         /// <summary>
         /// Instance

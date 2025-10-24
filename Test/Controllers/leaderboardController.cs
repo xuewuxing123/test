@@ -15,7 +15,6 @@ namespace Test.Controllers
     public class leaderboardController : ControllerBase
     {
         private readonly ILogger<leaderboardController> _logger;
-        
         /// <summary>
         /// 
         /// </summary>

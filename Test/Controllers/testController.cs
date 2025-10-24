@@ -23,7 +23,6 @@ namespace Test.Controllers
         /// testController
         /// </summary>
         /// <param name="logger"></param>
-
         public testController(ILogger<testController> logger)
         {
             _logger = logger;
