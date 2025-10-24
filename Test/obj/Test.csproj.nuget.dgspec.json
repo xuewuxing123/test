@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator\\source\\repos\\新建文件夹\\test\\Test\\Test.csproj": {}
+    "C:\\Users\\Administrator\\source\\repos\\Test\\test\\Test\\Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\source\\repos\\新建文件夹\\test\\Test\\Test.csproj": {
+    "C:\\Users\\Administrator\\source\\repos\\Test\\test\\Test\\Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\新建文件夹\\test\\Test\\Test.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\Test\\test\\Test\\Test.csproj",
         "projectName": "Test",
-        "projectPath": "C:\\Users\\Administrator\\source\\repos\\新建文件夹\\test\\Test\\Test.csproj",
+        "projectPath": "C:\\Users\\Administrator\\source\\repos\\Test\\test\\Test\\Test.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\source\\repos\\新建文件夹\\test\\Test\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\source\\repos\\Test\\test\\Test\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

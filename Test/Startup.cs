@@ -38,13 +38,13 @@ namespace Test
             {
                 options.AddPolicy("AllowAll",
                     builder => builder.AllowAnyOrigin()
-                                     .AllowAnyMethod()
-                                     .AllowAnyHeader());
+                                      .AllowAnyMethod()
+                                      .AllowAnyHeader());
             });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Test", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Leaderboard", Version = "v1" });
                 string basePath = AppContext.BaseDirectory;
                 string xmlPath = Path.Combine(basePath, "Test.xml");
                 c.IncludeXmlComments(xmlPath);
@@ -68,7 +68,7 @@ namespace Test
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Test v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Leaderboard v1"));
             }
 
             app.UseRouting();

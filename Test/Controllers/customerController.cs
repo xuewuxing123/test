@@ -28,9 +28,9 @@ namespace Test.Controllers
         /// <param name="score"></param>
         /// <returns></returns>
         [HttpPost("{customerid}/score/{score}")]
-        public IActionResult UpdateScore([Range(1, int.MaxValue)] long? customerid, [Range(-1000, 1000)] decimal? score)
+        public IActionResult UpdateScore([Range(1, int.MaxValue)] long customerid, [Range(-1000, 1000)] decimal score)
         {
-            var ret = SingletonConcurrentCache.Instance.AddOrUpdate(customerid.Value, score.Value);
+            var ret = SingletonConcurrentCache.Instance.AddOrUpdate(customerid, score);
             return Ok(ret);
         }
     }
