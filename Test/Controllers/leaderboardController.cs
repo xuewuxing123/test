@@ -35,7 +35,7 @@ namespace Test.Controllers
         {
             var list = SingletonConcurrentCache.Instance.List;
             int index = list.FindIndex(p => p.CustomerID == customerid);
-            int from = Interlocked.Add(ref index, -high) < 0 ? 0 : index;
+            int from  = Interlocked.Add(ref index, -high) < 0 ? 0 : index;
             var datas = list.Skip(from).Take(Interlocked.Add(ref high,++low)).ToList();
             return Ok(datas);
         }
