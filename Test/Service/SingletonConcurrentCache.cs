@@ -21,7 +21,10 @@ namespace Test.Service
         /// <summary>
         /// Constructor funcation
         /// </summary>
-        private SingletonConcurrentCache() { }
+        private SingletonConcurrentCache() 
+        {
+
+        }
         /// <summary>
         /// Instance
         /// </summary>
@@ -70,7 +73,7 @@ namespace Test.Service
             {
                 List<dynamic> retList = new List<dynamic>();
                 var list = concurrentDictionary.OrderByDescending(o => o.Value).ThenBy(o => o.Key).ToList();
-                int rank = 0;
+                int rank=0;
                 foreach (var kvp in list)
                 {
                     retList.Add(new { CustomerID = kvp.Key, Score = kvp.Value, Rank = Interlocked.Increment(ref rank) });

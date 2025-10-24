@@ -33,13 +33,12 @@ namespace Test.Controllers
         /// <param name="low"></param>
         /// <returns></returns>
         [HttpGet("{customerid}")]
-        public IActionResult GetLeaderboardByCustomId(long customerid, int high = 0, int low = 0)
+        public IActionResult GetLeaderboardByCustomId(long customerid, [Range(0, int.MaxValue)] int high = 0, [Range(0, int.MaxValue)] int low = 0)
         {
             var list = SingletonConcurrentCache.Instance.List;
             int index = list.FindIndex(p => p.CustomerID == customerid);
             int from = Interlocked.Add(ref index, -high) < 0 ? 0 : index;
-            int to = Interlocked.Add(ref index, Interlocked.Add(ref low, high));
-            var datas = list.Skip(from).Take(to - from + 1).ToList();
+            var datas = list.Skip(from).Take(Interlocked.Add(ref high,low + 1)).ToList();
             return Ok(datas);
         }
         /// <summary>
